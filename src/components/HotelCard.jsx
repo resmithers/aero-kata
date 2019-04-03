@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 
 export default ({ data: { name, starRating, facilities } }) => (
-	<Card>
+	<Card style={{ height: '20rem', overflowY: 'scroll', marginTop: '10px' }}>
 		<Card.Header>{name}</Card.Header>
 		<Card.Body>({starRating})</Card.Body>
 		<Card.Body>
