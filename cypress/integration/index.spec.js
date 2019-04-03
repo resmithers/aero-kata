@@ -22,13 +22,13 @@ describe('All Tests', () => {
 			cy.get('.App')
 				.contains('asc')
 				.click();
-			cy.get(':nth-child(1) > .card > .card-body').should('contain', 1);
-			cy.get(':nth-child(5) > .card > .card-body').should('contain', 5);
+			cy.get(':nth-child(1) > .card > .card-body > p').should('contain', 1);
+			cy.get(':nth-child(5) > .card > .card-body > p').should('contain', 5);
 			cy.get('.App')
 				.contains('desc')
 				.click();
-			cy.get(':nth-child(1) > .card > .card-body').should('contain', 5);
-			cy.get(':nth-child(5) > .card > .card-body').should('contain', 1);
+			cy.get(':nth-child(1) > .card > .card-body > p').should('contain', 5);
+			cy.get(':nth-child(5) > .card > .card-body > p').should('contain', 1);
 		});
 	});
 });

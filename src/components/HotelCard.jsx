@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Table } from 'react-bootstrap';
 import StarRatings from 'react-star-ratings';
 
 export default ({ data: { name, starRating, facilities } }) => (
@@ -15,8 +15,23 @@ export default ({ data: { name, starRating, facilities } }) => (
 				starSpacing="10px"
 			/>
 			<p>({starRating})</p>
+			{facilities.length > 0 && (
+				<Table striped bordered>
+					<thead>
+						<tr>
+							<th>Facilities:</th>
+						</tr>
+					</thead>
+					<tbody>
+						{facilities.map(fac => (
+							<tr key={fac}>
+								<td>{fac}</td>
+							</tr>
+						))}
+					</tbody>
+				</Table>
+			)}
+			{facilities.length === 0 && <p>No facilities</p>}
 		</Card.Body>
-		{facilities.length > 0 && facilities.map(fac => <p key={fac}>{fac}</p>)}
-		{facilities.length === 0 && <p>No facilities</p>}
 	</Card>
 );
