@@ -7,18 +7,15 @@ class HotelList extends Component {
 	render() {
 		const { hotels } = this.props;
 		return (
-			<div>
-				<p>HotelList</p>
-				<ListGroup variant="flush">
-					<Row>
-						{hotels.map(data => (
-							<Col sm={4} key={data.name}>
-								<HotelCard data={data}/>
-							</Col>
-						))}
-					</Row>
-				</ListGroup>
-			</div>
+			<ListGroup variant="flush">
+				<Row>
+					{hotels.map(data => (
+						<Col sm={4} key={data.name}>
+							<HotelCard data={data} />
+						</Col>
+					))}
+				</Row>
+			</ListGroup>
 		);
 	}
 }
