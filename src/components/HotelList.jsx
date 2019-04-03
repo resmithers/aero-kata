@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ListGroup, Row, Col } from 'react-bootstrap';
+import HotelCard from './HotelCard';
 
 class HotelList extends Component {
 	render() {
@@ -7,15 +9,15 @@ class HotelList extends Component {
 		return (
 			<div>
 				<p>HotelList</p>
-				{hotels.map(h => {
-					return (
-						<>
-							<p>{h.name}</p>
-							<p>{h.starRating}</p>
-							<p>{h.facilities}</p>
-						</>
-					);
-				})}
+				<ListGroup variant="flush">
+					<Row>
+						{hotels.map(data => (
+							<Col sm={4} key={data.name}>
+								<HotelCard data={data}/>
+							</Col>
+						))}
+					</Row>
+				</ListGroup>
 			</div>
 		);
 	}
