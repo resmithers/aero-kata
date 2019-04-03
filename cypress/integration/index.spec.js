@@ -43,5 +43,22 @@ describe('All Tests', () => {
 						.contains('car park');
 				});
 		});
+		it('Multiple toggles are combinable', () => {
+			cy.get('.App > :nth-child(2)')
+				.contains('pool')
+				.click();
+			cy.get('.row')
+				.find('.card')
+				.should('have.length', 2)
+				.should('contain', 'pool');
+			cy.get('.App > :nth-child(2)')
+				.contains('gym')
+				.click();
+			cy.get('.row')
+				.find('.card')
+				.should('have.length', 1)
+				.should('contain', 'gym')
+				.should('contain', 'pool');
+		});
 	});
 });

@@ -8,31 +8,31 @@ import { containsAll } from '../utils';
 class HotelList extends Component {
 	state = {
 		hotels: null,
-        order: null,
-        filters: null
-    };
-    
-    componentDidUpdate({hotels: h}, {order: o, filters: f}) {
-        const { hotels } = this.props;
-        const { order, filters } = this.state;
+		order: null,
+		filters: null,
+	};
 
-        if (order !== o) {
-            hotels.sort((a, b) => {
-                if (order === 'asc') return a.starRating - b.starRating;
-                if (order === 'desc') return b.starRating - a.starRating;
-                return 0;
-            })
-        }
-        if (filters !== f) {
-            this.setState({ hotels: hotels.filter(({facilities}) => containsAll(filters, facilities)) })
-        }
-    }
+	componentDidUpdate({ hotels: h }, { order: o, filters: f }) {
+		const { hotels } = this.props;
+		const { order, filters } = this.state;
+
+		if (order !== o || filters !== f) {
+			const newHotels = hotels
+				.sort((a, b) => {
+					if (order === 'asc') return a.starRating - b.starRating;
+					if (order === 'desc') return b.starRating - a.starRating;
+					return 0;
+				})
+				.filter(({ facilities }) => containsAll(filters, facilities));
+			this.setState({ hotels: newHotels });
+		}
+	}
 
 	applyOrder = order => {
 		this.setState({ order });
-    };
-    
-    applyFilter = filters => {
+	};
+
+	applyFilter = filters => {
 		this.setState({ filters });
 	};
 
@@ -40,7 +40,7 @@ class HotelList extends Component {
 		const hotels = this.state.hotels || this.props.hotels;
 		return (
 			<>
-				<Filters applyOrder={this.applyOrder} applyFilter={this.applyFilter}/>
+				<Filters applyOrder={this.applyOrder} applyFilter={this.applyFilter} />
 				<ListGroup variant="flush">
 					<Row>
 						{hotels.map(data => (

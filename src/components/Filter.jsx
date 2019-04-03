@@ -17,8 +17,8 @@ function Filters({ facilities, applyFilter, applyOrder }) {
 			</ToggleButtonGroup>
 
 			<ToggleButtonGroup name="order" type="radio" onChange={applyOrder}>
-				<ToggleButton value="desc">desc</ToggleButton>
-				<ToggleButton value="asc">asc</ToggleButton>
+				<ToggleButton variant="outline-primary" value="desc">desc</ToggleButton>
+				<ToggleButton variant="outline-primary" value="asc">asc</ToggleButton>
 			</ToggleButtonGroup>
 		</>
 	);
