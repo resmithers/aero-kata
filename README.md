@@ -15,10 +15,15 @@ $ npm start
 Which will open the project in your preferred browser
 
 ## To run Cypress testing
-Ensure that you have installed all the dependencies.
+Ensure that you have installed all the dependencies, and that the project is running
 
-The package.json has a this command built in
+The package.json has a this command built in.
 
+To run tests in terminal
+```
+$ npm test
+```
+or you can run the tests in the Cypress GUI
 ```
 $ npm run cypress
 ```
