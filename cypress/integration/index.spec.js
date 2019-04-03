@@ -31,4 +31,17 @@ describe('All Tests', () => {
 			cy.get(':nth-child(5) > .card > .card-body > p').should('contain', 1);
 		});
 	});
+	describe('Filter Tests', () => {
+		it('Toggle single filter', () => {
+			cy.get('.App > :nth-child(2)')
+				.contains('car park')
+				.click()
+				.then(() => {
+					cy.get('.row')
+						.find('.card')
+						.should('have.length', 4)
+						.contains('car park');
+				});
+		});
+	});
 });
