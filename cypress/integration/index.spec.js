@@ -61,4 +61,32 @@ describe('All Tests', () => {
 				.should('contain', 'pool');
 		});
 	});
+	describe('Sort & Filter', () => {
+		it('Checks that sort & filter functionality both work together', () => {
+			cy.get('.App > :nth-child(2)')
+				.contains('car park')
+				.click();
+			cy.get('.row')
+				.find('.card')
+				.should('have.length', 4)
+				.contains('car park');
+			cy.get('.App')
+				.contains('asc')
+				.click();
+			cy.get(':nth-child(1) > .card > .card-body > p').should('contain', 1);
+			cy.get(':nth-child(4) > .card > .card-body > p').should('contain', 5);
+			cy.get('.App > :nth-child(2)')
+				.contains('gym')
+				.click();
+			cy.get('.row')
+				.find('.card')
+				.should('have.length', 3)
+				.contains('gym');
+			cy.get('.App')
+				.contains('desc')
+				.click();
+			cy.get(':nth-child(1) > .card > .card-body > p').should('contain', 4);
+			cy.get(':nth-child(3) > .card > .card-body > p').should('contain', 1);
+		});
+	});
 });
